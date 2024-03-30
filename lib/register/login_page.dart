@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           SizedBox(height: 20), // Jarak atas
           Image.asset(
-            'logomdr.jpeg',
+            'img/logomdr.jpeg',
             // Ganti dengan path gambar Anda
             height: 250, // Sesuaikan dengan tinggi gambar
             width: 250, // Sesuaikan dengan lebar gambar
@@ -184,6 +184,59 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(
                     "Register",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 218, 203, 7),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Belum mempunyai akun? "),
+                TextButton(
+                  onPressed: () {
+                    Route route = MaterialPageRoute(
+                      builder: (context) => RegisterPage(),
+                    );
+                    Navigator.push(context, route);
+                  },
+                  child: Text(
+                    "Register",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 218, 203, 7),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 20), // Menambahkan jarak antara teks
+                Text("Sudah punya akun? "),
+                TextButton(
+                  onPressed: () {
+                    // Navigasi ke halaman ProfilePage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfilePage(
+                          namaLengkap: namaLengkap,
+                          email: email,
+                          alamatLengkap: alamatLengkap,
+                          username: username,
+                          tanggalLahir: tanggalLahir,
+                          gender: gender,
+                          password: password,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Profile",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 218, 203, 7),

@@ -29,6 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
   bool receiveNotifications = true;
   bool isDarkMode = false;
   bool isChecked = true;
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +39,11 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: Image.asset('logoatas.png',
-                  width: 27,
-                  height: 27), // Ganti 'your_image.png' dengan path gambar Anda
+              child: Image.asset(
+                'img/logoatas.png',
+                width: 27,
+                height: 27,
+              ),
             ),
             Text('Dashboard'),
           ],
@@ -103,66 +106,130 @@ class _ProfilePageState extends State<ProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hello', // Teks di luar kotak
-              style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+              'Selamat Datang', // Teks di luar kotak
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.normal,
+                fontFamily: 'OpenSans',
+              ),
             ),
-            Text(
-              '${widget.namaLengkap}', // Teks di luar kotak
-              style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width *
+                      0.5, // Atur lebar menjadi 50% dari lebar layar
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                      labelStyle: TextStyle(color: Colors.black),
+                      hintText: 'Search',
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Color.fromARGB(255, 128, 127, 126),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 218, 203,
+                              7), // Mengatur warna bingkai aktif menjadi gold
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 218, 203,
+                              7), // Mengatur warna bingkai aktif menjadi gold
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 20.0),
+                    ),
+                    onSubmitted: (value) {},
+                    style: TextStyle(fontSize: 16.0), // Atur ukuran font teks
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 20),
             Container(
-              width: MediaQuery.of(context)
-                  .size
-                  .width, // Lebar kontainer = lebar layar
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(
-                    255, 66, 66, 66), // Warna latar belakang kotak
-                borderRadius:
-                    BorderRadius.circular(0), // Mengatur border radius kotak
-              ),
+              width: MediaQuery.of(context).size.width * 0.9,
+              margin: EdgeInsets.all(16.0),
               padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[200], // Warna latar belakang container
+                borderRadius: BorderRadius.circular(10.0),
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    '${widget.username}',
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Implementasi fungsi untuk menambahkan pengajuan
+                    },
+                    child: Text('Tambah Pengajuan'),
+                    style: ButtonStyle(
+                      fixedSize: MaterialStateProperty.all(
+                        Size(MediaQuery.of(context).size.width * 0.2,
+                            30), // Sesuaikan dengan lebar yang diinginkan dan tinggi tombol
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    '${widget.email}',
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    '${widget.gender}',
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    '${widget.tanggalLahir}',
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    '${widget.alamatLengkap}',
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  SizedBox(height: 20),
+                  Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: DataTable(
+                        columns: [
+                          DataColumn(
+                            label: Text(
+                              'ID',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Name',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Profession',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                        rows: [
+                          DataRow(cells: [
+                            DataCell(Text('1')),
+                            DataCell(Text('Stephen')),
+                            DataCell(Text('Actor')),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(Text('5')),
+                            DataCell(Text('John')),
+                            DataCell(Text('Student')),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(Text('10')),
+                            DataCell(Text('Harry')),
+                            DataCell(Text('Leader')),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(Text('15')),
+                            DataCell(Text('Peter')),
+                            DataCell(Text('Scientist')),
+                          ]),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
