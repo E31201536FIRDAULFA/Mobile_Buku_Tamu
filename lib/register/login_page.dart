@@ -1,3 +1,5 @@
+import 'package:flutterku/register/home.dart';
+import 'package:flutterku/register/pengajuan.dart';
 import 'package:flutterku/register/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterku/register/register_page.dart';
@@ -29,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Buku Tamuku"),
+        title: Text("Halaman Login"),
         automaticallyImplyLeading: false,
       ),
       body: Column(
@@ -194,21 +196,21 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
 
+//LINK HALAMAN DOANGGGGGGGGGGGGGGG
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Belum mempunyai akun? "),
                 TextButton(
                   onPressed: () {
                     Route route = MaterialPageRoute(
-                      builder: (context) => RegisterPage(),
+                      builder: (context) => HomePage(),
                     );
                     Navigator.push(context, route);
                   },
                   child: Text(
-                    "Register",
+                    "Home",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 218, 203, 7),
@@ -216,7 +218,26 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(width: 20), // Menambahkan jarak antara teks
-                Text("Sudah punya akun? "),
+
+                TextButton(
+                  onPressed: () {
+                    // Navigasi ke halaman ProfilePage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PengajuanPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "PENGAJUAN",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 218, 203, 7),
+                    ),
+                  ),
+                ),
+
                 TextButton(
                   onPressed: () {
                     // Navigasi ke halaman ProfilePage
@@ -246,6 +267,8 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
+
+          //END LINK HALAMANNNNNN
         ],
       ),
     );

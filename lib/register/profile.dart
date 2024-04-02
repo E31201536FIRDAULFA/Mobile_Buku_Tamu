@@ -40,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
               child: Image.asset(
-                'img/logoatas.png',
+                'mdr-logo.png',
                 width: 27,
                 height: 27,
               ),
@@ -100,165 +100,152 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Selamat Datang', // Teks di luar kotak
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.normal,
-                fontFamily: 'OpenSans',
-              ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width *
-                      0.5, // Atur lebar menjadi 50% dari lebar layar
-                  child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 255, 255, 255),
-                      labelStyle: TextStyle(color: Colors.black),
-                      hintText: 'Search',
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Color.fromARGB(255, 128, 127, 126),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 218, 203,
-                              7), // Mengatur warna bingkai aktif menjadi gold
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 218, 203,
-                              7), // Mengatur warna bingkai aktif menjadi gold
-                        ),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 20.0),
-                    ),
-                    onSubmitted: (value) {},
-                    style: TextStyle(fontSize: 16.0), // Atur ukuran font teks
-                  ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.white, Color.fromARGB(255, 218, 203, 7)],
+          ),
+        ),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Selamat Datang', // Teks di luar kotak
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.normal,
+                  fontFamily: 'OpenSans',
                 ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              margin: EdgeInsets.all(16.0),
-              padding: EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[200], // Warna latar belakang container
-                borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Implementasi fungsi untuk menambahkan pengajuan
-                    },
-                    child: Text('Tambah Pengajuan'),
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(
-                        Size(MediaQuery.of(context).size.width * 0.2,
-                            30), // Sesuaikan dengan lebar yang diinginkan dan tinggi tombol
+                  Container(
+                    width: MediaQuery.of(context).size.width *
+                        0.5, // Atur lebar menjadi 50% dari lebar layar
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelStyle: TextStyle(color: Colors.black),
+                        hintText: 'Search',
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Color.fromARGB(255, 128, 127, 126),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 218, 203,
+                                7), // Mengatur warna bingkai aktif menjadi gold
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 218, 203,
+                                7), // Mengatur warna bingkai aktif menjadi gold
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 16.0, horizontal: 20.0),
                       ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Center(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: DataTable(
-                        columns: [
-                          DataColumn(
-                            label: Text(
-                              'ID',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              'Name',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              'Profession',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                        rows: [
-                          DataRow(cells: [
-                            DataCell(Text('1')),
-                            DataCell(Text('Stephen')),
-                            DataCell(Text('Actor')),
-                          ]),
-                          DataRow(cells: [
-                            DataCell(Text('5')),
-                            DataCell(Text('John')),
-                            DataCell(Text('Student')),
-                          ]),
-                          DataRow(cells: [
-                            DataCell(Text('10')),
-                            DataCell(Text('Harry')),
-                            DataCell(Text('Leader')),
-                          ]),
-                          DataRow(cells: [
-                            DataCell(Text('15')),
-                            DataCell(Text('Peter')),
-                            DataCell(Text('Scientist')),
-                          ]),
-                        ],
-                      ),
+                      onSubmitted: (value) {},
+                      style: TextStyle(fontSize: 16.0), // Atur ukuran font teks
                     ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(height: 20),
-            CheckboxListTile(
-              title: Text('Belajar Dasar Flutter'),
-              subtitle: Text('Dart, Widget, http'),
-              value: isChecked,
-              onChanged: (value) {
-                setState(() {
-                  isChecked = value!;
-                });
-              },
-            ),
-            SizedBox(height: 20),
-            ListTile(
-              title: Text('Backend Programing'),
-              subtitle: Text('Dart, Node JS, PHP, Java, dll'),
-              trailing: Switch(
-                value: isDarkMode,
-                onChanged: (value) {
-                  setState(() {
-                    isDarkMode = value;
-                  });
-                },
+              SizedBox(height: 20),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                margin: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.white60, // Warna latar belakang container
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: DataTable(
+                          columns: [
+                            DataColumn(
+                              label: Text(
+                                'ID',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Name',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                'Profession',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                          rows: [
+                            DataRow(cells: [
+                              DataCell(Text('1')),
+                              DataCell(Text('Stephen')),
+                              DataCell(Text('Actor')),
+                            ]),
+                            DataRow(cells: [
+                              DataCell(Text('5')),
+                              DataCell(Text('John')),
+                              DataCell(Text('Student')),
+                            ]),
+                            DataRow(cells: [
+                              DataCell(Text('10')),
+                              DataCell(Text('Harry')),
+                              DataCell(Text('Leader')),
+                            ]),
+                            DataRow(cells: [
+                              DataCell(Text('15')),
+                              DataCell(Text('Peter')),
+                              DataCell(Text('Scientist')),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                alignment: Alignment.bottomRight,
+                margin: EdgeInsets.only(right: 16, bottom: 16),
+                child: FloatingActionButton.extended(
+                  onPressed: () {
+                    // Implementasi fungsi ketika FAB ditekan
+                  },
+                  label: Text('Buat Jadwal'),
+                  icon: Icon(Icons.add),
+                  backgroundColor: Colors.white,
+                  foregroundColor: Color.fromARGB(255, 218, 203, 7),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
